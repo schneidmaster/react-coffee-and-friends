@@ -1,6 +1,5 @@
 React = require('react')
 Route = require('react-router').Route
-DefaultRoute = require('react-router').DefaultRoute
 
 # Require route components.
 App = require('./components/app.coffee')
@@ -10,11 +9,11 @@ Home = require('./components/home.coffee')
 Login = require('./components/login.coffee')
 
 module.exports = (
-  <Route path='/' handler={App}>
-    <Route handler={Container}>
-      <Route path='/' handler={Home} />
-      <Route name='login' handler={Login} />
-      <Route handler={Authenticated}>
+  <Route component={App}>
+    <Route component={Container}>
+      <Route path='/' component={Home} />
+      <Route path='login' component={Login} />
+      <Route component={Authenticated}>
         # Routes that require authentication go here.
       </Route>
     </Route>

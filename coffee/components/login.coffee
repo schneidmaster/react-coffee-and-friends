@@ -1,3 +1,4 @@
+ReactDOM = require('react-dom')
 React = require('react')
 Fluxxor = require('fluxxor')
 Router = require('react-router')
@@ -8,7 +9,7 @@ $ = require('jquery')
 module.exports = React.createClass
   displayName: 'Login'
   
-  mixins: [Fluxxor.FluxMixin(React), Fluxxor.StoreWatchMixin('AuthStore'), Router.Navigation]
+  mixins: [Fluxxor.FluxMixin(React), Fluxxor.StoreWatchMixin('AuthStore'), Router.History]
 
   getStateFromFlux: ->
     store = @props.flux.store('AuthStore')
@@ -20,12 +21,12 @@ module.exports = React.createClass
 
   login: (e) ->
     e.preventDefault()
-    node = $(@getDOMNode())
+    node = $(ReactDOM.findDOMNode(@))
     @props.flux.actions.auth.login(node.find('#email').val(), node.find('#password').val())
 
-  componentWillUpdate: (_, nextState) ->
-    if nextState.loggedIn
-      @transitionTo('/') 
+  componentDidUpdate: ->
+    if @loggedIn
+      @history.pushState(null, '/')
 
   render: ->
     <Loader loaded={@state.loaded}>

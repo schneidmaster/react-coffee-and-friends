@@ -1,18 +1,12 @@
 React = require('react')
 Link = require('react-router').Link
-RouteHandler = require('react-router').RouteHandler
 Router = require('react-router')
 Fluxxor = require('fluxxor')
 
 module.exports = React.createClass
   displayName: 'Authenticated'
   
-  mixins: [Fluxxor.FluxMixin(React), Fluxxor.StoreWatchMixin('AuthStore'), Router.Navigation]
-
-  getInitialState: ->
-    {
-      loginRedirect: false
-    }
+  mixins: [Fluxxor.FluxMixin(React), Fluxxor.StoreWatchMixin('AuthStore'), Router.History]
 
   getStateFromFlux: ->
     store = @props.flux.store('AuthStore')
@@ -23,10 +17,16 @@ module.exports = React.createClass
 
   componentWillMount: ->
     unless @state.loggedIn
-      @setState(loginRedirect: true)
-
-      # Transition to login
-      @transitionTo('login')
+      noty(
+        theme: 'relax'
+        text: 'You must log in first.'
+        layout: 'topRight'
+        type: 'error'
+        timeout: 3000
+      )
+      @history.pushState(null, '/login')
 
   render: ->
-    <RouteHandler loginRedirect={@state.loginRedirect} {...@props} />
+    <div>
+      {React.cloneElement(@props.children, { loginRedirect: !@state.loggedIn })}
+    </div>

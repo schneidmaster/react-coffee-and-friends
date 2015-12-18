@@ -1,7 +1,9 @@
 # React/Router/Flux depepdencies
+ReactDOM = require('react-dom')
 React = require('react')
-Router = require('react-router')
+Router = require('react-router').Router
 Fluxxor = require('fluxxor')
+createBrowserHistory = require('history/lib/createBrowserHistory')
 
 # Actions and routes
 actions = require('./actions.coffee')
@@ -12,13 +14,14 @@ RouteStore = require('./stores/route_store.coffee')
 AuthStore = require('./stores/auth_store.coffee')
 
 # Create and initialize router and Flux
-router = Router.create(routes: routes)
+createFluxComponent = (Component, props) ->
+  <Component {...props} flux={flux} />
+
+router = <Router routes={routes} flux={flux} createElement={createFluxComponent} history={createBrowserHistory()} />
 stores =
   RouteStore: new RouteStore(router: router)
   AuthStore: new AuthStore()
 
 flux = new Fluxxor.Flux(stores, actions.methods)
 
-Router.run(routes, (Handler) ->
-  React.render(<Handler flux={flux} />,document.getElementById('app'))
-)
+ReactDOM.render(router, document.getElementById('app'))
