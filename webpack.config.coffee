@@ -6,3 +6,5 @@ module.exports =
         loaders: ['coffee', 'cjsx']
       }
     ]
+  resolve:
+    extensions: ['', '.js', '.json', '.coffee'] 
