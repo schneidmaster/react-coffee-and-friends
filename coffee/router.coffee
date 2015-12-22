@@ -6,12 +6,12 @@ Fluxxor = require('fluxxor')
 createBrowserHistory = require('history/lib/createBrowserHistory')
 
 # Actions and routes
-actions = require('./actions.coffee')
-routes = require('./routes.coffee')
+actions = require('./actions')
+routes = require('./routes')
 
 # Stores
-RouteStore = require('./stores/route_store.coffee')
-AuthStore = require('./stores/auth_store.coffee')
+RouteStore = require('./stores/route_store')
+AuthStore = require('./stores/auth_store')
 
 # Create and initialize router and Flux
 createFluxComponent = (Component, props) ->

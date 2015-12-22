@@ -1,5 +1,5 @@
 Fluxxor = require('fluxxor')
-actions = require('../actions.coffee')
+actions = require('../actions')
 
 module.exports = Fluxxor.createStore
   initialize: (options) ->

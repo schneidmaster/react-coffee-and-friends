@@ -2,11 +2,11 @@ React = require('react')
 Route = require('react-router').Route
 
 # Require route components.
-App = require('./components/app.coffee')
-Authenticated = require('./components/authenticated.coffee')
-Container = require('./components/container.coffee')
-Home = require('./components/home.coffee')
-Login = require('./components/login.coffee')
+App = require('./components/app')
+Authenticated = require('./components/authenticated')
+Container = require('./components/container')
+Home = require('./components/home')
+Login = require('./components/login')
 
 module.exports = (
   <Route component={App}>
