@@ -6,14 +6,12 @@ A highly opinionated starter kit for a standalone React frontend. Uses:
 * CoffeeScript
 * React Router
 * Fluxxor
-* BassCSS
-* PostCSS
+* Bootstrap
 * Webpack
-* Gulp
 
 Includes:
 
-* Gulp build setup with appropriate npm packages preinstalled in package.json
+* Webpack build setup with appropriate npm packages preinstalled in package.json
 * Example components to set up and use React Router with Fluxxor
 * Bonus Authenticated and Login components to demonstrate doing login redirects
 
@@ -28,9 +26,9 @@ Includes:
 
 1. Clone the repository (`git clone git@github.com:schneidmaster/react-coffee-and-friends.git`)
 2. Install packages: `npm install`
-3. Start the development server: `gulp serve`
-4. Open [http://localhost:9010](http://localhost:9010) in a browser window
-5. Run `gulp build` to generate a minified version of the code in the `dist` directory, suitable for deployment
+3. Start the development server: `npm start`
+4. Open [http://localhost:8080](http://localhost:8080) in a browser window
+5. Run `npm run webpack` to generate a minified version of the code in the `dist` directory, suitable for deployment
 
 ## Contributing
 
