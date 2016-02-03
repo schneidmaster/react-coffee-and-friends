@@ -5,6 +5,13 @@ Router = require('react-router').Router
 Fluxxor = require('fluxxor')
 createBrowserHistory = require('history/lib/createBrowserHistory')
 
+# React/Router/Flux depepdencies
+ReactDOM = require('react-dom')
+React  = require('react')
+Router = require('react-router').Router
+Fluxxor = require('fluxxor')
+createBrowserHistory = require('history/lib/createBrowserHistory')
+
 # Actions and routes
 actions = require('./actions')
 routes = require('./routes')
@@ -24,4 +31,6 @@ stores =
 
 flux = new Fluxxor.Flux(stores, actions.methods)
 
-ReactDOM.render(router, document.getElementById('app'))
+container = document.createElement('div')
+document.body.appendChild(container)
+ReactDOM.render(router, container)
