@@ -1,5 +1,5 @@
-React = require('react')
-Route = require('react-router').Route
+import React     from 'react'
+import { Route } from 'react-router'
 
 # Require route components.
 App = require('./components/app')

@@ -1,4 +1,4 @@
-React = require('react')
+import React from 'react'
 
 require('scss/app')
 

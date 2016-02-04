@@ -1,7 +1,6 @@
-React = require('react')
-Link = require('react-router').Link
-Router = require('react-router')
-Fluxxor = require('fluxxor')
+import React            from 'react'
+import { Router, Link } from 'react-router'
+import Fluxxor          from 'fluxxor'
 
 module.exports = React.createClass
   displayName: 'Authenticated'

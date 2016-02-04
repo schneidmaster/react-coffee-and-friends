@@ -1,5 +1,5 @@
-Fluxxor = require('fluxxor')
-actions = require('../actions')
+import Fluxxor from 'fluxxor'
+import actions from 'actions'
 
 module.exports = Fluxxor.createStore
   initialize: (options) ->

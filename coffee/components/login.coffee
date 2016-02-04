@@ -1,10 +1,9 @@
-ReactDOM = require('react-dom')
-React = require('react')
-Fluxxor = require('fluxxor')
-Router = require('react-router')
-Link = require('react-router').Link
-Loader = require('react-loader')
-$ = require('jquery')
+import ReactDOM         from 'react-dom'
+import React            from 'react'
+import Fluxxor          from 'fluxxor'
+import { Router, Link } from 'react-router'
+import Loader           from 'react-loader'
+import $                from 'jquery'
 
 module.exports = React.createClass
   displayName: 'Login'
