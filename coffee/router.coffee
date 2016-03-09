@@ -1,9 +1,9 @@
 # React/Router/Flux depepdencies
-import ReactDOM      from 'react-dom'
-import React         from 'react'
-import { Router }    from 'react-router'
-import Fluxxor       from 'fluxxor'
-import createHistory from 'history/lib/createBrowserHistory'
+import ReactDOM           from 'react-dom'
+import React              from 'react'
+import { Router }         from 'react-router'
+import Fluxxor            from 'fluxxor'
+import { browserHistory } from 'react-router'
 
 # Actions and routes
 import actions from 'actions'
@@ -17,7 +17,7 @@ import AuthStore  from 'stores/auth_store'
 createFluxComponent = (Component, props) ->
   <Component {...props} flux={flux} />
 
-router = <Router routes={routes} flux={flux} createElement={createFluxComponent} history={createHistory()} />
+router = <Router routes={routes} flux={flux} createElement={createFluxComponent} history={browserHistory} />
 stores =
   RouteStore: new RouteStore(router: router)
   AuthStore: new AuthStore()
