@@ -1,11 +1,17 @@
-path              = require('path')
-HtmlWebpackPlugin = require('html-webpack-plugin')
+path                      = require('path')
+webpack                   = require('webpack')
+StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
+SitemapPlugin             = require('sitemap-webpack-plugin')
+ExtractTextPlugin         = require('extract-text-webpack-plugin')
+
+# Insert list of paths here
+paths = ['/']
 
 module.exports =
   entry: './coffee/router'
 
   output:
-    filename: '[name].[chunkhash].js'
+    filename: 'production.min.js'
     path: './dist'
     libraryTarget: 'umd'
     publicPath: '/'
@@ -22,22 +28,23 @@ module.exports =
       }
       {
         test: /\.scss$/
-        loaders: ['style', 'css', 'resolve-url', 'sass']
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!resolve-url-loader!sass-loader')
       }
       {
         test: /\.(ttf|otf|png|ico)$/
-        loaders: ['file']
+        loaders: ['file?name=[name].[ext]']
       }
     ]
 
    plugins: [
-      new HtmlWebpackPlugin(
-        template: 'index.html'
-        minify:
-          collapseWhitespace: true
+      new StaticSiteGeneratorPlugin('main', paths)
+      new ExtractTextPlugin('production.min.css', allChunks: true)
+      new SitemapPlugin('https://YOURDOMAIN.com', paths)
+      new webpack.DefinePlugin(
+        __PROD__: process.env.BUILD_PROD is 'true'
       )
     ]
 
   resolve:
     root: [path.resolve('./coffee'), path.resolve('./'), path.resolve('./node_modules')]
-    extensions: ['', '.js', '.json', '.coffee', '.scss', '.svg']
+    extensions: ['', '.js', '.json', '.coffee', '.scss']
