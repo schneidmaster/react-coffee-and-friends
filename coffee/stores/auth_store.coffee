@@ -1,9 +1,9 @@
-import Fluxxor from 'fluxxor'
-import actions from 'actions'
+import Fluxxor   from 'fluxxor'
+import constants from 'constants/all'
 
 module.exports = Fluxxor.createStore
   initialize: ->
-    if localStorage.getItem('authToken')
+    if typeof(localStorage) isnt 'undefined' && localStorage.getItem('authToken')
       @loggedIn = true
       @authToken = localStorage.getItem('authToken')
     else
@@ -12,9 +12,9 @@ module.exports = Fluxxor.createStore
     @loaded = true
     @error = false
  
-    @bindActions(actions.constants.AUTH.LOGIN, @onLogin)
-    @bindActions(actions.constants.AUTH.LOGIN_SUCCESS, @onLoginSuccess)
-    @bindActions(actions.constants.AUTH.LOGIN_FAIL, @onLoginFail)
+    @bindActions(constants.AUTH.LOGIN, @onLogin)
+    @bindActions(constants.AUTH.LOGIN_SUCCESS, @onLoginSuccess)
+    @bindActions(constants.AUTH.LOGIN_FAIL, @onLoginFail)
 
   onLogin: ->
     @loaded = false
