@@ -1,31 +1,25 @@
-React          = require('react')
-{Router, Link} = require('react-router')
-Fluxxor        = require('fluxxor')
+React            = require('react')
+{browserHistory} = require('react-router')
 
 module.exports = React.createClass
   displayName: 'Authenticated'
-  
-  mixins: [Fluxxor.FluxMixin(React), Fluxxor.StoreWatchMixin('AuthStore'), Router.History]
 
-  getStateFromFlux: ->
-    store = @props.flux.store('AuthStore')
-    
-    {
-      loggedIn: store.loggedIn
-    }
+  statics:
+    getStores: ->
+      [AuthStore]
+
+    getPropsFromStores: ->
+      {
+        auth: AuthStore.getState()
+      }
 
   componentWillMount: ->
-    unless @state.loggedIn
-      noty(
-        theme: 'relax'
-        text: 'You must log in first.'
-        layout: 'topRight'
-        type: 'error'
-        timeout: 3000
-      )
-      @history.pushState(null, '/login')
+    browserHistory.push('/login') unless @props.auth.loggedIn
+
+  componentDidUpdate: ->
+    browserHistory.push('/login') unless @props.auth.loggedIn
 
   render: ->
     <div>
-      {React.cloneElement(@props.children, { loginRedirect: !@state.loggedIn })}
+      {@props.children}
     </div>

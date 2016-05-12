@@ -1,23 +1,19 @@
-# React/Router/Flux depepdencies
 ReactDOM                                                            = require('react-dom')
 React                                                               = require('react')
 ReactDOMServer                                                      = require('react-dom/server')
 {Router, RouterContext, match, browserHistory, createMemoryHistory} = require('react-router')
+ReactGA                                                             = require('react-ga')
 routes                                                              = require('routes')
 Root                                                                = require('components/root')
-Fluxxor                                                             = require('fluxxor')
-
-actions = require('actions/all')
-routes  = require('routes')
-stores  = require('stores/all')
-
-# Create and initialize router and Flux
-createFluxComponent = (Component, props) ->
-  <Component {...props} flux={flux} />
 
 if typeof document isnt 'undefined'
-  flux = new Fluxxor.Flux(stores, actions)
-  ReactDOM.render(<Router routes={routes} flux={flux} createElement={createFluxComponent} history={browserHistory} />, document.getElementById('app'))
+  if __PROD__
+    ReactGA.initialize('UA-#########-#')
+    logPageView = -> ReactGA.pageview(window.location.pathname)
+  else
+    logPageView = ->
+      #
+  ReactDOM.render(<Router routes={routes} history={browserHistory} onUpdate={logPageView} />, document.getElementById('app'))
 
 module.exports = (locals, callback) ->
   history = createMemoryHistory()

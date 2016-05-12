@@ -5,14 +5,14 @@ A highly opinionated starter kit for a standalone React frontend. Uses:
 * React
 * CoffeeScript
 * React Router
-* Fluxxor
+* Alt.js
 * Bootstrap
 * Webpack
 
 Includes:
 
 * Webpack build setup with appropriate npm packages preinstalled in package.json
-* Example components to set up and use React Router with Fluxxor
+* Example components to set up and use React Router with Alt.js
 * Bonus Authenticated and Login components to demonstrate doing login redirects
 
 ## Development

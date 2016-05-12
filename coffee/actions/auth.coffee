@@ -1,9 +1,10 @@
-constants = require('constants/all')
+alt = require('altBase')
 
-module.exports =
-  login: (email, password) ->
-    @dispatch(constants.AUTH.LOGIN)
+class AuthActions
+  @generateActions('receiveLogin', 'receiveLoginError')
 
+  requestLogin: (email, password) ->
     # Do something here to log in, e.g. make an API call.
-    # Dispatch AUTH.LOGIN_SUCCESS with a login token on success, or
-    # AUTH.LOGIN_FAIL on failure.
+    # Call @receiveLogin on success and @receiveLoginError on failure.
+
+module.exports = alt.createActions(AuthActions)
