@@ -1,4 +1,4 @@
-import auth from 'constants/auth'
+auth = require('constants/auth')
 
 module.exports =
   AUTH: auth

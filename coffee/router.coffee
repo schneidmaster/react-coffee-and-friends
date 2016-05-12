@@ -1,15 +1,15 @@
 # React/Router/Flux depepdencies
-import ReactDOM                                                              from 'react-dom'
-import React                                                                 from 'react'
-import ReactDOMServer                                                        from 'react-dom/server'
-import { Router, RouterContext, match, browserHistory, createMemoryHistory } from 'react-router'
-import routes                                                                from 'routes'
-import Root                                                                  from 'components/root'
-import Fluxxor                                                               from 'fluxxor'
+ReactDOM                                                            = require('react-dom')
+React                                                               = require('react')
+ReactDOMServer                                                      = require('react-dom/server')
+{Router, RouterContext, match, browserHistory, createMemoryHistory} = require('react-router')
+routes                                                              = require('routes')
+Root                                                                = require('components/root')
+Fluxxor                                                             = require('fluxxor')
 
-import actions from 'actions/all'
-import routes  from 'routes'
-import stores  from 'stores/all'
+actions = require('actions/all')
+routes  = require('routes')
+stores  = require('stores/all')
 
 # Create and initialize router and Flux
 createFluxComponent = (Component, props) ->

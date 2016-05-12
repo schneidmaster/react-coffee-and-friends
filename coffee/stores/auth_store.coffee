@@ -1,5 +1,5 @@
-import Fluxxor   from 'fluxxor'
-import constants from 'constants/all'
+Fluxxor   = require('fluxxor')
+constants = require('constants/all')
 
 module.exports = Fluxxor.createStore
   initialize: ->

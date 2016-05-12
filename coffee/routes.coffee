@@ -1,11 +1,11 @@
-import React     from 'react'
-import { Route } from 'react-router'
+React   = require('react')
+{Route} = require('react-router')
 
 # Require route components.
-import App           from 'components/app'
-import Authenticated from 'components/authenticated'
-import Home          from 'components/home'
-import Login         from 'components/login'
+App           = require('components/app')
+Authenticated = require('components/authenticated')
+Home          = require('components/home')
+Login         = require('components/login')
 
 module.exports = (
   <Route component={App}>

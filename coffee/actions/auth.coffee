@@ -1,4 +1,4 @@
-import constants from 'constants/all'
+constants = require('constants/all')
 
 module.exports =
   login: (email, password) ->

@@ -1,5 +1,5 @@
-import React from 'react'
-import Html  from 'react-html-document'
+React = require('react')
+Html  = require('react-html-document')
 
 require('scss/app')
 require('img/favicon.ico')

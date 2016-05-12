@@ -1,4 +1,4 @@
-import auth from 'actions/auth'
+auth = require('actions/auth')
 
 module.exports =
   auth: auth
