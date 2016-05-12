@@ -19,7 +19,7 @@ if typeof document isnt 'undefined'
   flux = new Fluxxor.Flux(stores, actions)
   ReactDOM.render(<Router routes={routes} flux={flux} createElement={createFluxComponent} history={browserHistory} />, document.getElementById('app'))
 
-module.exports = (locals, callback) -> 
+module.exports = (locals, callback) ->
   history = createMemoryHistory()
   location = history.createLocation(locals.path)
 
