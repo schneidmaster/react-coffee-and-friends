@@ -20,7 +20,7 @@ module.exports =
     loaders: [
       {
         test: /\.coffee$/
-        loaders: ['coffee', 'cjsx']
+        loaders: ['react-hot', 'coffee', 'cjsx']
       }
       {
         test: /\.json$/
