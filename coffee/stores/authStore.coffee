@@ -1,5 +1,6 @@
-alt     = require('altBase')
-actions = require('actions/authActions')
+alt      = require('altBase')
+actions  = require('actions/authActions')
+{notify} = require('react-notify-toast')
 
 class AuthStore
   displayName: 'AuthStore'
@@ -17,7 +18,7 @@ class AuthStore
     @setState(loggedIn: false)
 
   onReceiveLogin: (payload) ->
-    alert('Logged in!')
+    notify.show('Logged in!', 'success')
     payload = payload[0]
     localStorage.setItem('authToken', payload.token)
     localStorage.setItem('role', payload.user.role)
@@ -25,7 +26,7 @@ class AuthStore
     @setState(loggedIn: true, authToken: payload.token, role: payload.user.role, id: payload.user.id)
 
   onReceiveLoginError: ->
-    alert('Incorrect email or password; please try again')
+    notify.show('Incorrect email or password; please try again', 'error')
 
 module.exports = alt.createStore(AuthStore, 'AuthStore')
 
