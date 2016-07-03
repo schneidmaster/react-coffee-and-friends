@@ -1,5 +1,6 @@
 React            = require('react')
 {browserHistory} = require('react-router')
+AuthStore        = require('stores/auth')
 
 module.exports = React.createClass
   displayName: 'Authenticated'

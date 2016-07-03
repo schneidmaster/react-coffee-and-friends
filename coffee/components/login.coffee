@@ -1,4 +1,4 @@
-AuthActions                    = require('actions/authActions')
+AuthActions                    = require('actions/auth')
 React                          = require('react')
 {Row, Col, Input, ButtonInput} = require('react-bootstrap')
 

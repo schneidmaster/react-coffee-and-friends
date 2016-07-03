@@ -1,7 +1,8 @@
 alt = require('altBase')
 
 class AuthActions
-  @generateActions('receiveLogin', 'receiveLoginError')
+  constructor: ->
+    @generateActions('receiveLogin', 'receiveLoginError')
 
   requestLogin: (email, password) ->
     # Do something here to log in, e.g. make an API call.

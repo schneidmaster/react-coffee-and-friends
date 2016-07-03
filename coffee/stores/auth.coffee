@@ -1,5 +1,5 @@
 alt      = require('altBase')
-actions  = require('actions/authActions')
+actions  = require('actions/auth')
 {notify} = require('react-notify-toast')
 
 class AuthStore
@@ -29,4 +29,3 @@ class AuthStore
     notify.show('Incorrect email or password; please try again', 'error')
 
 module.exports = alt.createStore(AuthStore, 'AuthStore')
-
